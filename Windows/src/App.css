@@ -1,0 +1,37 @@
+/* Prevent scrolling */
+html,
+body {
+  margin: 0;
+  /* Remove default margin */
+  padding: 0;
+  /* Remove default padding */
+  height: 100%;
+  /* Full height for body */
+  overflow: hidden;
+  /* Disable scroll */
+  font-family: sans-serif;
+  /* Set default font */
+}
+
+#root {
+  height: 100%;
+  /* Ensure the app takes the full height of the screen */
+}
+
+/* Remove white background from images */
+img {
+  background-color: transparent;
+  /* Ensure transparency */
+  display: block;
+  /* Removes any gap at the bottom of images */
+}
+
+.icon {
+  transition: color 0.3s;
+  /* Smooth transition for color changes */
+}
+
+.icon:hover {
+  color: blue;
+  /* Change color on hover */
+}
