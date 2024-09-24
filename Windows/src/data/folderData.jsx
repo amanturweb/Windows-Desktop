@@ -1,7 +1,9 @@
-import React, { useState } from 'react'; // Import React and useState hook for managing component state
-import samsara from '../assets/img/samsara.png'; // Importing images for experience section
+import React, { useState } from 'react';
+// Importing logos for experience section
+import samsara from '../assets/img/samsara.png';
 import makers from '../assets/img/makers.png';
 import equinix from '../assets/img/equnix.png';
+//Importing images for projects section 
 import gmailClone from '../assets/img/gmailClone.png';
 import shoppingCart from '../assets/img/shopping-cart.png';
 import ticTac from '../assets/img/ticTac-Toe.png';
@@ -9,7 +11,10 @@ import quiz from '../assets/img/quiz.png';
 import weather from '../assets/img/weather.png';
 import clock from '../assets/img/clock.png';
 import calculator from '../assets/img/calculator.png';
-import Modal from '../components/Modal'; // Importing the Modal component for displaying project images
+// Importing the Modal component for displaying project images
+import Modal from '../components/Modal';
+// Importin CoursesData 
+import coursesData from '../data/coursesData.jsx';
 
 // Component to display the projects section
 const ProjectSection = () => {
@@ -37,7 +42,7 @@ const ProjectSection = () => {
         <div>
             <h2>My Projects</h2> {/* Title for the projects section */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
-                {/* Map through projects and render each one */}
+                {/* Map through projects and render*/}
                 {projects.map((project, index) => (
                     <div key={index} onClick={() => handleImageClick(project.image)}>
                         <img
@@ -51,6 +56,43 @@ const ProjectSection = () => {
             </div>
             {/* Render the Modal component if the modal is open */}
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} imageSrc={selectedImage} />
+        </div>
+    );
+};
+
+// Component to display the courses section
+const CoursesSection = () => {
+    const handleCourseClick = (url) => {
+        window.open(url, '_blank'); // Open the URL in a new tab
+    };
+
+    return (
+        <div>
+            <h2>Courses</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: '10px' }}>
+                {coursesData.map((course, index) => (
+                    <button
+                        key={index}
+                        onClick={() => handleCourseClick(course.url)}
+                        style={{
+                            padding: '10px',
+                            border: 'none',
+                            backgroundColor: 'rgba(14, 14, 49, 0.686)',
+                            color: 'white',
+                            cursor: 'pointer',
+                            textAlign: 'center',
+                            borderRadius: '5px'
+                        }}
+                    >
+                        {course.name}
+                    </button>
+                ))}
+            </div>
+            <div style={{ marginTop: '40px', color: 'rgba(14, 14, 49, 0.686)', fontWeight: 'bold' }}>
+                <p>
+                    I have successfully completed various courses that have significantly enhanced my skills! I am eager to stay updated with the latest features and continuously learn and grow in my field. Each course has equipped me with the knowledge and tools to tackle new challenges and contribute effectively to my projects.
+                </p>
+            </div>
         </div>
     );
 };
@@ -140,16 +182,11 @@ const folderData = [
     },
     {
         name: 'Projects',
-        content: <ProjectSection />, // Use the ProjectSection component to render projects
+        content: <ProjectSection />, //ProjectSection component to rende projects
     },
     {
-        name: 'Games',
-        content: (
-            <div>
-                <h2>Favorite Games</h2>
-                <p>Here are some of my favorite games...</p>
-            </div>
-        ),
+        name: 'Courses',
+        content: <CoursesSection />
     },
     {
         name: 'Contacts',
@@ -171,5 +208,5 @@ const folderData = [
     },
 ];
 
-// Export the folder data array for use in other components
+
 export default folderData;
