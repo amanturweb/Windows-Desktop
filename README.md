@@ -1,2 +1,2 @@
-Screeenshot of Project ( NOt Finished Yet ...)
+Screeenshot of Project
 ![view](Windows/src/assets/img/Screenshot.png);
